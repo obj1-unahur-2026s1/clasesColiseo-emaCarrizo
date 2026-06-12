@@ -7,7 +7,7 @@ class ArmaDeFilo {
 }
 
 
-class ArmaContundentes{
+class ArmaContundente{
     const peso
 
     method ataque() = peso

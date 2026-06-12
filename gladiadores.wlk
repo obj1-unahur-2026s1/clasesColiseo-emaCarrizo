@@ -5,6 +5,8 @@ import armas.*
 class Gladiador{
     var vida = 100
 
+    method vida() = vida
+
     method atacar(unGladiador){
         const daño = self.poderDeAtaque() - unGladiador.defensa()
         unGladiador.perderVida(daño)
@@ -74,6 +76,12 @@ class Dimachaerus inherits Gladiador{
         super(unGladiador)
         destreza += 1
     }
+
+    method agregarArma(unArma) {
+        armas.add(unArma)
+    }
+
+    override method destreza() = destreza
 
     override method defensa() = destreza / 2
 
