@@ -40,13 +40,13 @@ describe "Tests del Coliseo y Gladiadores" {
     // --------------------------------------------------------
     test "crearGrupoCon (Mirmillon): Crea un grupo asignando el nombre estático correspondiente" {
         const grupoMirmillon = maximus.crearGrupoCon(espartaco)
-        assert.equals("Mirmillolandia", grupoMirmillon.nombre())
+        assert.equals("Mirmillolandia", grupoMirmillon.nombreGrupo())
     }
 
     test "crearGrupoCon (Dimachaerus): Crea un grupo concatenando la suma del poder de ataque de los miembros" {
         // Poder Maximus (40) + Poder Espartaco (25) = 65.
         const grupoDimachaerus = espartaco.crearGrupoCon(maximus)
-        assert.equals("D-65", grupoDimachaerus.nombre())
+        assert.equals("D-65", grupoDimachaerus.nombreGrupo())
     }
 
     // --------------------------------------------------------
@@ -55,22 +55,22 @@ describe "Tests del Coliseo y Gladiadores" {
     test "curar (Gladiador): Restaura la vida del gladiador al tope de 100 luego de ser herido" {
         maximus.pelearCon(espartaco) // No le hace daño
         const titan = new Mirmillon(fuerza = 50, arma = espada, armadura = casco) // Atk = 70
-        maximus.recibirAtaque(titan) // Recibe 45 daño, vida en 55
+        maximus.perderVida(titan) // Recibe 45 daño, vida en 55
         assert.equals(55, maximus.vida())
         maximus.curar()
         assert.equals(100, maximus.vida())
     }
 
     test "curar (Coliseo): El coliseo puede curar exitosamente a un gladiador específico a través de su método" {
-        espartaco.recibirAtaque(maximus) // Recibe 35 de daño
+        espartaco.perderVida(maximus) // Recibe 35 de daño
         coliseo.curarGladiador(espartaco)
         assert.equals(100, espartaco.vida())
     }
 
     test "curarGrupo (Coliseo): Delega correctamente a los miembros de la colección restaurando sus vidas" {
         // Como curarGrupo asume un objeto que entienda forEach, le pasamos una lista
-        espartaco.recibirAtaque(maximus)
-        crixus.recibirAtaque(maximus)
+        espartaco.perderVida(maximus)
+        crixus.perderVida(maximus)
         coliseo.curarGrupo(espartaco.crearGrupoCon(crixus))
         assert.equals(100, crixus.vida()) 
     }

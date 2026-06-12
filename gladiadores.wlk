@@ -59,7 +59,7 @@ class Mirmillon inherits Gladiador{
     method crearGrupoCon(unGladiador) {
         return new Grupo(
             nombreGrupo="Mirmillolandia", 
-            miembros=#{self,unGladiador}
+            miembros=#{self, unGladiador}
             )
     }
 
@@ -90,7 +90,7 @@ class Dimachaerus inherits Gladiador{
     method crearGrupoCon(unGladiador) {
         return new Grupo(
             nombreGrupo="D-"+ (self.poderDeAtaque() + unGladiador.poderDeAtaque()).toString(),   //El toString()funciona para definir que sea si o si string el tipo de dato
-            miembros=#{self,unGladiador})
+            miembros=#{self, unGladiador})
     }
 
 }
