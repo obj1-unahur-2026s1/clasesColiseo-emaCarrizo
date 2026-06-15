@@ -97,7 +97,7 @@ class Dimachaerus inherits Gladiador{
 
 class Grupo{
     const property nombreGrupo
-    const miembros = #{}
+    const property miembros = #{}
     var cantidadDePeleas = 0
 
     method agregarMiembro(unGladiador) {

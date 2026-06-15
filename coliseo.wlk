@@ -16,7 +16,7 @@ object coliseo {
     }
 
     method curarGrupo(unGrupo){
-        unGrupo.miembros().forEach({g => g.curar(unGrupo)})
+        unGrupo.miembros().forEach({g => g.curar()})
     }
 
 }

@@ -53,24 +53,24 @@ describe "Tests del Coliseo y Gladiadores" {
     // Tests de curar (Gladiador y Coliseo)
     // --------------------------------------------------------
     test "curar (Gladiador): Restaura la vida del gladiador al tope de 100 luego de ser herido" {
-        maximus.pelearCon(espartaco) // No le hace daño
+        espartaco.pelearCon(maximus) // No le hace daño
         const titan = new Mirmillon(fuerza = 50, arma = espada, armadura = casco) // Atk = 70
-        maximus.perderVida(titan) // Recibe 45 daño, vida en 55
+        titan.atacar(maximus) // Recibe 45 daño, vida en 55
         assert.equals(55, maximus.vida())
         maximus.curar()
         assert.equals(100, maximus.vida())
     }
 
     test "curar (Coliseo): El coliseo puede curar exitosamente a un gladiador específico a través de su método" {
-        espartaco.perderVida(maximus) // Recibe 35 de daño
+        espartaco.atacar(maximus) // Recibe 35 de daño
         coliseo.curarGladiador(espartaco)
         assert.equals(100, espartaco.vida())
     }
 
     test "curarGrupo (Coliseo): Delega correctamente a los miembros de la colección restaurando sus vidas" {
         // Como curarGrupo asume un objeto que entienda forEach, le pasamos una lista
-        espartaco.perderVida(maximus)
-        crixus.perderVida(maximus)
+        espartaco.atacar(maximus)
+        crixus.atacar(maximus)
         coliseo.curarGrupo(espartaco.crearGrupoCon(crixus))
         assert.equals(100, crixus.vida()) 
     }
