@@ -75,5 +75,8 @@ describe "Tests del Coliseo y Gladiadores" {
         assert.equals(100, crixus.vida()) 
     }
 
+    //prueba de push para 2do parcial
+    
+
 
 }
